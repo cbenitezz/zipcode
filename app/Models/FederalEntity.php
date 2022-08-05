@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FederalEntity extends Model
 {
     use HasFactory;
+
+
+    public function zipCodes()
+    {
+        return $this->hasMany('App\ZipCode');
+    }
 }
