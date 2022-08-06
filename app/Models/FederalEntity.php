@@ -12,6 +12,6 @@ class FederalEntity extends Model
 
     public function zipCodes()
     {
-        return $this->hasMany('App\Models\ZipCode');
+        return $this->hasMany(ZipCode::class);
     }
 }

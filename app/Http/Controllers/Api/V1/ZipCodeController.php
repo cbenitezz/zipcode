@@ -19,29 +19,10 @@ class ZipCodeController extends Controller
     public function index()
     {
 
-
         return new ZipCodeCollection(ZipCode::latest()->paginate());
-/*
-        return response()->json([
-
-                    'Search for Zip Code'         => '/api/zipcode/{ Number Zip Code }',
-                    'Search all Zip Code'         => '/api/zipcode/all',
-                    'Search all Federal Entity'   => '/api/zipcode/federal',
-                    'Search all localities'       => '/api/zipcode/locality',
-
-         ]);*/
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
 
     }
+
 
     /**
      * Display the specified resource.
@@ -55,14 +36,13 @@ class ZipCodeController extends Controller
         $zipcode = ZipCode::where('zip_code',$code)->first();
         if(!$zipcode){
 
-            return response()->json(["Zip Code not exist"]);
+            $msg_code ="Zip Code not exist";
 
         }else{
-            $zip = new ZipCodeResource($zipcode);
-            return response()->json([$zip]);
+            $msg_code = new ZipCodeResource($zipcode);
         }
 
-
+        return response()->json([$msg_code]);
     }
 
     /**
@@ -72,19 +52,5 @@ class ZipCodeController extends Controller
      * @param  \App\Models\ZipCode  $zipCode
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ZipCode $zipCode)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ZipCode  $zipCode
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ZipCode $zipCode)
-    {
-        //
-    }
 }

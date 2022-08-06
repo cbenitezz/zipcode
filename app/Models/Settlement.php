@@ -11,11 +11,11 @@ class Settlement extends Model
 
     public function zipCodes()
     {
-        return $this->hasMany('App\Models\ZipCode');
+        return $this->hasMany(ZipCode::class);
     }
 
     public function settlementType()
     {
-        return $this->belongsTo('App\Models\SettlementType','settlement_type_id');
+        return $this->belongsTo(SettlementType::class,'settlement_type_id');
     }
 }

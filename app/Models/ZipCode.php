@@ -12,16 +12,16 @@ class ZipCode extends Model
 
     public function federalEntity()
     {
-        return $this->belongsTo('App\Models\FederalEntity','federal_entity_id');
+        return $this->belongsTo(FederalEntity::class,'federal_entity_id');
     }
 
     public function municipality()
     {
-        return $this->belongsTo('App\Models\Municipality','municipality_id');
+        return $this->belongsTo(Municipality::class,'municipality_id');
     }
 
     public function settlement()
     {
-        return $this->belongsTo('App\Models\Settlement','settlement_id');
+        return $this->belongsTo(Settlement::class,'settlement_id');
     }
 }

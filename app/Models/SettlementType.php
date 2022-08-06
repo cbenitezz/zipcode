@@ -12,6 +12,6 @@ class SettlementType extends Model
 
     public function settlement()
     {
-        return $this->hasMany('App\Models\Settlement');
+        return $this->hasMany(Settlement::class);
     }
 }

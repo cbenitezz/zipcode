@@ -2,10 +2,13 @@
 
 namespace App\Http\Resources\V1;
 
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ZipCodeResource extends JsonResource
 {
+
+
     /**
      * Transform the resource into an array.
      *
@@ -14,31 +17,18 @@ class ZipCodeResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
+
 
         return [
 
             'zip_code' => $this->zip_code,
             'locality' => $this->locality,
-            'federal_entity' => [
-                'key' => $this->federalEntity->key,
-                'name'=> $this->federalEntity->name,
-                'code'=> $this->federalEntity->code
-            ],
-            'settlement' => [
-                'key' => $this->settlement->id,
-                'name'=> $this->settlement->name,
-                'zone_type' => $this->settlement->zone_type,
-                        'settlement' => [
-                            'name' => $this->settlement->settlementType->name,
-                        ],
-                    ],
-            'municipality' => [
-
-                'key' => $this->municipality->key,
-                'name'=> $this->municipality->name,
-            ]
+            'federal_entity' => new FederalResource($this->federalEntity),
+            'settlement'     => new SettlementResource($this->settlement),
+            'municipality'   => new MunicipalityResource($this->municipality),
 
         ];
+
+
     }
 }
