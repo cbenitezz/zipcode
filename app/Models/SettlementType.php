@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SettlementType extends Model
 {
     use HasFactory;
+
+
+    public function settlement()
+    {
+        return $this->hasMany('App\Models\Settlement');
+    }
 }

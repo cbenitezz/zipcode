@@ -11,6 +11,6 @@ class Municipality extends Model
 
     public function zipCodes()
     {
-        return $this->hasMany('App\ZipCode');
+        return $this->hasMany('App\Models\ZipCode');
     }
 }

@@ -26,20 +26,17 @@ class ZipCodeResource extends JsonResource
                 'code'=> $this->federalEntity->code
             ],
             'settlement' => [
-                'Key' => $this->settlement->key,
+                'key' => $this->settlement->id,
                 'name'=> $this->settlement->name,
                 'zone_type' => $this->settlement->zone_type,
-
-                    'settlement' => [
-                        'name' => $this->settlement->settlementType->name,
+                        'settlement' => [
+                            'name' => $this->settlement->settlementType->name,
+                        ],
                     ],
             'municipality' => [
 
                 'key' => $this->municipality->key,
                 'name'=> $this->municipality->name,
-            ]
-
-
             ]
 
         ];

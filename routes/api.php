@@ -6,4 +6,4 @@ use App\Http\Controllers\Api\V1\ZipCodeController as ZipV1;
 
 
 
-Route::apiResource('zipcode', ZipV1::class)->only(['show']);
+Route::apiResource('zipcode', ZipV1::class)->only(['index','show']);

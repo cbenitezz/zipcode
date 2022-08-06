@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\ZipCodeCollection;
 use App\Http\Resources\V1\ZipCodeResource;
-use App\Models\FederalEntity;
 use App\Models\ZipCode;
 use Illuminate\Http\Request;
 
@@ -18,10 +18,18 @@ class ZipCodeController extends Controller
      */
     public function index()
     {
-        return response()->json(['App'       => 'ZipCode',
-                                 'Status'    => 'Active',
-                                 'Endpoints' => 'zipcode/api/zipcode/#number Code'
-                                ]);
+
+
+        return new ZipCodeCollection(ZipCode::latest()->paginate());
+/*
+        return response()->json([
+
+                    'Search for Zip Code'         => '/api/zipcode/{ Number Zip Code }',
+                    'Search all Zip Code'         => '/api/zipcode/all',
+                    'Search all Federal Entity'   => '/api/zipcode/federal',
+                    'Search all localities'       => '/api/zipcode/locality',
+
+         ]);*/
     }
 
     /**
@@ -41,16 +49,19 @@ class ZipCodeController extends Controller
      * @param  \App\Models\ZipCode  $zipCode
      * @return \Illuminate\Http\Response
      */
-    public function show(ZipCode $zipcode)
+    public function show($code)
     {
 
-       // $query  = ZipCode::find($zipcode);
-        //$query = ZipCode::with('federal_entities')->get();
+        $zipcode = ZipCode::where('zip_code',$code)->first();
+        if(!$zipcode){
 
+            return response()->json(["Zip Code not exist"]);
 
-        $zip = new ZipCodeResource($zipcode);
-       // dd($zip);
-        return response()->json([$zip]);
+        }else{
+            $zip = new ZipCodeResource($zipcode);
+            return response()->json([$zip]);
+        }
+
 
     }
 
