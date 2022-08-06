@@ -8,7 +8,13 @@
 </p>
 
 ## Zip Code Mexico Api
-<img src="https://green-digital.co/images/route.png" width="100%">
+
+Routes
+<img src="https://green-digital.co/images/route1.png" width="100%">
+
+Database
+
+<img src="https://green-digital.co/images/database.png" width="100%">
 
 
 ## About Laravel
